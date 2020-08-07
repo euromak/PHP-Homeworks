@@ -1,3 +1,5 @@
+<!-- HOMEWORK #1 -->
+
 <?php 
 $title = "Main Page";
 $heading = "Заголовок";
