@@ -86,6 +86,7 @@
 -->
 
 <?php
+
 	function mathOperation($arg1, $arg2, $operation) {
 		switch($operation) {
 			case addition: echo addition($arg1, $arg2) . "<br>";
@@ -106,4 +107,6 @@
 <!--
 5. Посмотреть на встроенные функции PHP. Используя имеющийся HTML-шаблон, вывести текущий год в подвале при помощи встроенных функций PHP.
 -->
+
 <footer><?php echo "Текущий год: " . date(o) . "г." . "<br>"; ?></footer>
+
