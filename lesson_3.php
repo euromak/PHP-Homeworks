@@ -100,10 +100,7 @@ foreach($cities as $key => $value) {
  -->
 
 <?php 
-	// $a = "класс";
-	// $b = str_split($a, 2);
-	// // echo var_dump($b);
-	// var_dump($b);
+
 	$alphabetArr = [
 		'а' => 'a',
 		'б' => 'b',
@@ -167,11 +164,27 @@ foreach($cities as $key => $value) {
 
 		$outputWord = implode("", $arrOutputWord);
 
-		return var_dump($outputWord);
+		return $outputWord . "<br>";
 	}
 
 	echo translate("мясорубка", $alphabetArr);
 
+?>
+
+<!--
+5. Написать функцию, которая заменяет в строке пробелы на подчеркивания и возвращает видоизмененную строчку.
+-->
+
+<?php 
+	$string = "Hello world! I am developer.";
+
+	function replace($input) {
+		$output = str_replace(" ", "_", $input);
+
+		return $output . "<br>";
+	}
+
+	echo replace($string);
 ?>
 
 </body>
