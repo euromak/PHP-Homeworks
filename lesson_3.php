@@ -1,4 +1,11 @@
-<!--
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--
 1. С помощью цикла while вывести все числа в промежутке от 0 до 100, которые делятся на 3 без остатка.
 -->
 
@@ -86,3 +93,87 @@ foreach($cities as $key => $value) {
 }
 
 ?>
+
+<!--
+4. Объявить массив, индексами которого являются буквы русского языка, а значениями – соответствующие латинские буквосочетания (‘а’=> ’a’, ‘б’ => ‘b’, ‘в’ => ‘v’, ‘г’ => ‘g’, …, ‘э’ => ‘e’, ‘ю’ => ‘yu’, ‘я’ => ‘ya’).
+Написать функцию транслитерации строк.
+ -->
+
+<?php 
+	// $a = "класс";
+	// $b = str_split($a, 2);
+	// // echo var_dump($b);
+	// var_dump($b);
+	$alphabetArr = [
+		'а' => 'a',
+		'б' => 'b',
+		'в' => 'v',
+		'г' => 'g',
+		'д' => 'd',
+		'е' => 'e',
+		'ё' => 'yo',
+		'ж' => 'zh',
+		'з' => 'z',
+		'и' => 'i',
+		'й' => 'yi',
+		'к' => 'k',
+		'л' => 'l',
+		'м' => 'm',
+		'н' => 'n',
+		'о' => 'o',
+		'п' => 'p',
+		'р' => 'r',
+		'с' => 's',
+		'т' => 't',
+		'у' => 'u',
+		'ф' => 'f',
+		'х' => 'kh',
+		'ц' => 'ts',
+		'ч' => 'ch',
+		'ш' => 'sh',
+		'щ' => 'shch',
+		'ъ' => '\'',
+		'ы' => 'y',
+		'ь' => '\'',
+		'э' => 'e',
+		'ю' => 'yu',
+		'я' => 'ya',
+
+	];
+
+	
+
+	function translate($word, $dictionary) {
+		$arrInputWord = str_split($word, 2);
+		$arrOutputWord = [];
+		$outputWord = "";
+
+		for($i = 0; $i < count($arrInputWord); $i++) {
+			echo $arrInputWord[$i] . "<br>";
+
+			if(array_key_exists($arrInputWord[$i], $dictionary)) {
+				foreach($dictionary as $key => $value) {
+
+					if($arrInputWord[$i] == $key) {
+						$arrOutputWord[] = $value;
+						break;
+					}
+						
+				}
+
+			}
+
+		}
+
+		$outputWord = implode("", $arrOutputWord);
+
+		return var_dump($outputWord);
+	}
+
+	echo translate("мясорубка", $alphabetArr);
+
+?>
+
+</body>
+</html>
+
