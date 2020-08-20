@@ -31,8 +31,8 @@ function render($imgArr) {
 
     foreach($imgArr as $key => $value) {
         if(strlen($value) > 2) {
-            echo '<div class="catalog_item">' . "<a href=\".$value\" target=\"blank\">" . "<img src=\".$value\">" .
-                $key . '</a>' . '</div>';
+            echo '<div class="catalog_item">' . "<a href=\".$value\" target=\"blank\" class=\"catalog_link\">" .
+                "<img src=\".$value\" class=\"catalog_img\">" . $key . '</a>' . '</div>';
         }
     }
 }
@@ -48,8 +48,8 @@ function renderFromDir() {
 
     foreach($list as $key => $value) {
         if(strlen($value) > 2) {
-            echo '<div class="catalog_item">' . "<a href=\"$dir/$value\" target=\"blank\">" .
-                "<img src=\"$dir/$value\">" . '</a>' . '</div>';
+            echo '<div class="catalog_item">' . "<a href=\"$dir/$value\" target=\"blank\" class=\"catalog_link\">" .
+                "<img src=\"$dir/$value\" class=\"catalog_img\">" . '</a>' . '</div>';
         }
     }
 }
