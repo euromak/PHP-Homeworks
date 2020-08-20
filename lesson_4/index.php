@@ -29,9 +29,10 @@
 </head>
 <body>
     <div class="catalog">
-        <?php echo render(); ?>
-
+        <?php echo render($imgArr); ?>
     </div>
-
+    <div class="catalog">
+        <?php echo renderFromDir(); ?>
+    </div>
 </body>
 </html>
