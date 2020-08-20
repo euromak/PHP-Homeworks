@@ -22,7 +22,7 @@ function render() {
 
     foreach($imgArr as $key => $value) {
         if(strlen($value) > 2) {
-            echo '<div class="catalog_item">' . "<a href=\"$value\" target=\"blank\">" . "<img src=\".$value\">" . $key . '</a>' . '</div>';
+            echo '<div class="catalog_item">' . "<a href=\".$value\" target=\"blank\">" . "<img src=\".$value\">" . $key . '</a>' . '</div>';
         }
 
     }

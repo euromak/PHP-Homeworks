@@ -29,9 +29,7 @@
 </head>
 <body>
     <div class="catalog">
-        <?php echo render();
-            echo __DIR__;
-        ?>
+        <?php echo render(); ?>
 
     </div>
 
