@@ -87,6 +87,7 @@
     <div class="catalog">
         <?php echo renderFromDir(); ?>
     </div>
+    <?php logDate();?>
     <script src="./js/main.js"></script>
 </body>
 </html>

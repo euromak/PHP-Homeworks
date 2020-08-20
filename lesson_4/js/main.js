@@ -12,13 +12,14 @@ const catalog = {
     init(){
         this.zoomImg();
         addEventListener('click', ()=>{
-            console.log(event);
+            console.log(event.target);
             event.preventDefault();
 
             if(event.target.className === 'catalog_img') {
                 this.createModal();
-            } else if((event.target.className === 'modal') || (event.target.className === 'btn_close')){
-               this.closeModal();
+            } else if((event.target.className === 'modal') || (event.target.classList.contains('modal_btn'))){
+                console.log(event.target);
+                this.closeModal();
             }
 
         })
@@ -33,14 +34,13 @@ const catalog = {
 
     createModal(){
         this.mainBlock[this.mainBlock.length - 1].insertAdjacentHTML('afterend', `<div class="modal">
-        <img src="${event.target.src}" class="modal_img"><div class="btn_close"><span class="one"></span>
-        <span class="two"></span></div></div>`);
+        <img src="${event.target.src}" class="modal_img"><div class="btn_close"><span class="modal_btn one"></span>
+        <span class="modal_btn two"></span></div></div>`);
         console.log(event.target.src);
     },
 
     closeModal(){
-        event.target.className = "hidden";
-
+        document.querySelector('.modal').className = "hidden";
     },
 
 }
