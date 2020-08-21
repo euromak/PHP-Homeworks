@@ -2,33 +2,31 @@
 <?php 
 	// пункты меню
 	$mainNav = [
-		'ГЛАВНАЯ' => [],
+		'ГЛАВНАЯ',
 		'НОВОСТИ' => [
 			'Новости о политике',
 			'Новости о спорте',
 			'Новости о мире',
 		],
-		'КОНТАКТЫ' => [],
-		'СПРАВКА' => [],
+		'КОНТАКТЫ',
+		'СПРАВКА',
 	];
 
 	function render($data) {
-		foreach($data as $key => $value) {
 
-			if(count($value) > 0) {
+        foreach($data as $key => $value) {
 
-				for($i = 0; $i < count($value); $i++) {
-					echo "<div><a><span>" . $key . "</span></a>" . "<div><a>" . $value[$i] . "</a></div>" . "</div>";
-				}
+            if(is_array($value)){
+                echo "<div class='menu_item'><a href='#'><span>$key</span></a><div>";
+                foreach($value as $sub => $val) {
+                    echo "<a href='#'>$val</a>";
+                }
+                echo "</div></div>";
+            } else {
+                echo "<div class='menu_item'><a href='#'><span>$value</span></a></div>";
+            }
 
-				continue;
-			}
-
-			echo "<div><a><span>" . $key . "</span></a></div>";
-			
+            continue;
 
 		}
 	}
-
-
-?>
