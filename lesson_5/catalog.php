@@ -7,31 +7,32 @@
 просмотр конкретной фотографии (изображение оригинального размера) по ее ID в базе данных.
  * */
 
-$mysql = mysqli_connect('VH228.spaceweb.ru:3306', 'goldenroru_image', '1914War1918', 'goldenroru_image');
+$link = mysqli_connect('VH228.spaceweb.ru:3306', 'goldenroru_image', '1914War1918', 'goldenroru_image');
 
-if(mysqli_connect_errno($mysql)) {
+if(mysqli_connect_errno($link)) {
    echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 }
 
-echo $mysql->host_info;
 
 
-$query = mysqli_query($mysql, "SELECT * FROM images");
-$result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
-foreach($result as $key => $value) {
-    echo $key . "<br>" . $value. "<br>";
+// функция создания элементов сетки изображений
+
+function render($link) {
+    $query = mysqli_query($link, "SELECT * FROM images");
+
+    while($row = mysqli_fetch_assoc($query)){
+        echo "<div class=\"catalog_item\">" . "<a href=\".{$row['url']}\" target=\"blank\" class=\"catalog_link\"
+                data-id=\"{$row['id']}\">" . "<img src=\".{$row['url']}\" class=\"catalog_img\" 
+                data-id=\"{$row['id']}\">" . "{$row['name']}" . "</a>" . "</div>";
+    }
 }
 
-//var_dump($result);
-//
-//function render($imgArr) {
-//
-//    foreach($imgArr as $key => $value) {
-//        if(strlen($value) > 2) {
-//            echo '<div class="catalog_item">' . "<a href=\".$value\" target=\"blank\" class=\"catalog_link\">" .
-//                "<img src=\".$value\" class=\"catalog_img\">" . $key . '</a>' . '</div>';
-//        }
-//    }
-//}
+
+function openModal($link) {
+    if(empty((int)$_GET['id'])) {
+        return;
+    }
+
+}
 

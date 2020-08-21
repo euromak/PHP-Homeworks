@@ -10,37 +10,44 @@ const catalog = {
     linkArr: document.querySelectorAll('.catalog_link'),
 
     init(){
-        this.zoomImg();
-        addEventListener('click', ()=>{
-            console.log(event.target);
+        addEventListener('click', () => {
             event.preventDefault();
-
-            if(event.target.className === 'catalog_img') {
-                this.createModal();
-            } else if((event.target.className === 'modal') || (event.target.classList.contains('modal_btn'))){
-                console.log(event.target);
-                this.closeModal();
-            }
-
+            this.zoomImg();
         })
-
     },
 
     zoomImg(){
-        console.log(this.elementsArr);
-        console.log(this.imgArr);
-        console.log(this.linkArr);
+        if((event.target.className === 'catalog_img') || (event.target.className === 'catalog_link')) {
+            this.createModal();
+        } else if((event.target.className === 'modal') || (event.target.classList.contains('modal_btn'))){
+            console.log(event.target);
+            this.closeModal();
+        }
     },
 
     createModal(){
+        let value = "";
+
+        if(event.target.className === 'catalog_link') {
+            value = event.target.href;
+        } else  {
+            value = event.target.src;
+        }
+
+        this.addLink();
         this.mainBlock[this.mainBlock.length - 1].insertAdjacentHTML('afterend', `<div class="modal">
-        <img src="${event.target.src}" class="modal_img"><div class="btn_close"><span class="modal_btn one"></span>
+        <img src="${value}" class="modal_img"><div class="btn_close"><span class="modal_btn one"></span>
         <span class="modal_btn two"></span></div></div>`);
-        console.log(event.target.src);
     },
 
     closeModal(){
         document.querySelector('.modal').className = "hidden";
+    },
+
+    addLink(){
+        let value = event.target.dataset.id;
+        console.log(event.target.dataset.id);
+        history.pushState(null, null, 'http://php-homeworks/lesson_5/' + '?id=' + value);
     },
 
 }

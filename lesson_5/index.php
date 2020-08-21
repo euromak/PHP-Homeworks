@@ -17,6 +17,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
+            max-width: 1200px;
             margin: 50px auto;
         }
         .catalog_item {
@@ -75,11 +76,18 @@
             background: white;
             transform: rotate(-45deg);
         }
+        @media screen and (max-width: 1000px) {
+            .modal_img {
+                padding-top: 50%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="catalog">
-
+        <?php render($link);
+        echo var_dump($_GET);
+        ?>
     </div>
 
     <script src="./js/main.js"></script>
