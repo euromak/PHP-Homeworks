@@ -2,6 +2,7 @@
 * 3. *[ для тех, кто изучал JS-1 ] При клике по миниатюре нужно показывать полноразмерное изображение в модальном окне
 * (материал в помощь: http://dontforget.pro/javascript/prostoe-modalnoe-okno-na-jquery-i-css-bez-plaginov/)
 * */
+"use strict";
 
 const catalog = {
     mainBlock: document.querySelectorAll('.catalog'),
@@ -10,22 +11,24 @@ const catalog = {
     linkArr: document.querySelectorAll('.catalog_link'),
 
     init(){
-        addEventListener('click', () => {
-            event.preventDefault();
-            this.zoomImg();
-        })
+        // addEventListener('click', (event) => {
+        //     // event.preventDefault();
+        //     this.zoomImg(event);
+        // })
     },
 
-    zoomImg(){
+    zoomImg(event){
         if((event.target.className === 'catalog_img') || (event.target.className === 'catalog_link')) {
-            this.createModal();
+            this.createModal(event);
+            this.addLink(event);
+
         } else if((event.target.className === 'modal') || (event.target.classList.contains('modal_btn'))){
             console.log(event.target);
-            this.closeModal();
+            this.closeModal(event);
         }
     },
 
-    createModal(){
+    createModal(event){
         let value = "";
 
         if(event.target.className === 'catalog_link') {
@@ -34,7 +37,7 @@ const catalog = {
             value = event.target.src;
         }
 
-        this.addLink();
+
         this.mainBlock[this.mainBlock.length - 1].insertAdjacentHTML('afterend', `<div class="modal">
         <img src="${value}" class="modal_img"><div class="btn_close"><span class="modal_btn one"></span>
         <span class="modal_btn two"></span></div></div>`);
@@ -44,10 +47,13 @@ const catalog = {
         document.querySelector('.modal').className = "hidden";
     },
 
-    addLink(){
-        let value = event.target.dataset.id;
+    addLink(event){
+        let value = 'http://php-homeworks/lesson_5/' + '?id=' + event.target.dataset.id;
         console.log(event.target.dataset.id);
-        history.pushState(null, null, 'http://php-homeworks/lesson_5/' + '?id=' + value);
+        let request = fetch(value);
+        request.then(result => console.log(result)).catch(error => console.log(error));
+        // console.log(request);
+        // history.pushState(null, null, 'http://php-homeworks/lesson_5/' + '?id=' + value);
     },
 
 }

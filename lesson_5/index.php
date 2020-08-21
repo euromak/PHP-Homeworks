@@ -86,8 +86,9 @@
 <body>
     <div class="catalog">
         <?php render($link);
-        echo var_dump($_GET);
+//        openModal($link);
         ?>
+
     </div>
 
     <script src="./js/main.js"></script>
