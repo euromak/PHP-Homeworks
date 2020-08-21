@@ -66,19 +66,17 @@ function renderFromDir() {
 */
 
 function logDAte() {
-
-    file_put_contents('log.txt', date('l jS \of F Y h:i:s A') . "\n", FILE_APPEND);
-    $arrDate = file('log.txt');
+    define('PATH_LOGS', './logs/');
+    var_dump(PATH_LOGS);
+    file_put_contents(PATH_LOGS . 'log.txt', date('l jS \of F Y h:i:s A') . "\n", FILE_APPEND);
+    $arrDate = file(PATH_LOGS . 'log.txt');
 
     if((count($arrDate) % 10 === 0) && (count($arrDate) !== 0)) {
         $countFile = count($arrDate) / 10;
-        $fileName = "log" . $countFile . '.txt';
+        $fileName = PATH_LOGS . "log" . $countFile . '.txt';
 
         file_put_contents($fileName, $arrDate);
     }
-
-
-
 
     print_r($arrDate) ;
     print_r("<br>" . count($arrDate) . "<br>") ;
