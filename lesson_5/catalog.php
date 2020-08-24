@@ -7,7 +7,7 @@
 
 
 $link = mysqli_connect('VH228.spaceweb.ru:3306', 'goldenroru_image', '1914War1918', 'goldenroru_image');
-openModal($link);
+
 
 if(mysqli_connect_errno($link)) {
    echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
@@ -42,9 +42,7 @@ function openModal($link) {
     }
 
 }
+openModal($link);
 
-/**
- * 2. В базе данных создать таблицу, в которой будет храниться информация о картинках (адрес на сервере, размер, имя).
- */
 
 
