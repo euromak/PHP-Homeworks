@@ -21,7 +21,7 @@ function render($link) {
 
     while($row = mysqli_fetch_assoc($query)){
         echo "<div class=\"catalog_item\">" . "<a href=\".?id={$row['id']}\" target=\"blank\" class=\"catalog_link\"
-                data-id=\"{$row['id']}\">" . "<img src=\".{$row['url']}\" class=\"catalog_img\" 
+                data-id=\"{$row['id']}\">" . "<img src=\"./{$row['url']}\" class=\"catalog_img\" 
                 data-id=\"{$row['id']}\">" . "{$row['name']}" . "</a>" . "</div>";
     }
 
@@ -44,5 +44,22 @@ function openModal($link) {
 }
 openModal($link);
 
+// добавление машин в бд
+function addImg($link) {
+    $request = mysqli_query($link, 'SELECT name FROM images WHERE name IN("bmw_i", "bmw_z")');
+    if($request === false) {
+        echo 'dsd';
+    }
+
+    while($result = mysqli_fetch_assoc($request)) {
+        if($result === TRUE) {
+            echo var_dump($result);
+        }
+
+        $query = mysqli_query($link, "INSERT INTO images(name, url, size) VALUES('bmw_i', 'images/bmw_i.png', '108982'), ('bmw_z', 'images/bmw_z.png', '226310');");
+    };
+}
 
 
+
+addImg($link);
